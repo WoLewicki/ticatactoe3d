@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% for i in range(3) %}
+        <table style="float: left; margin-right: 15px" id="plansza{{ i }}">
+        {% for j in range(3) %}
+            <tr>
+            {% for k in range(3) %}
+                <th>
+                    {% if board[i][j][k] == "o" %} <img src="{{ url_for('static', filename='O.jpg') }}"/>
+                    {% elif board[i][j][k] == "x" %} <img src="{{ url_for('static', filename='X.jpg') }}"/>
+                    {% else %}<a href="link?x={{ i }}&y={{ j }}&z={{ k }}"><img src="{{ url_for('static', filename='empty.jpg') }}"/> </a>
+                    {% endif %}
+               </th>
+             {% endfor %}
+            </tr>
+        {% endfor %}
+        </table>
+        <br>
+        <br>
+    {% endfor %}
+
+{% endblock %}

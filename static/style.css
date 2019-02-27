@@ -1,0 +1,61 @@
+
+/* Niby hidden zawsze ukrywa ale lepiej się upewnić. */
+#komunikat[hidden]
+{
+    display: none;
+}
+/* Wyśrodkowanie wszystkiego */
+#komunikat,
+#tresc,
+#przycisk
+{
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+/*Ostylkowanie planszy według uznania */
+
+#plansza
+{
+    /*position relative ponieważ będę przykrywać planszę przez pseudoklasę before na position absolute */
+    position: relative;
+    /*Żeby obeamowania się łączyły */
+    border-collapse: collapse;
+    /*Wyśrodkowanie */
+    margin: auto;
+    margin-top: 100px;
+}
+
+/*Stylowanie komórki (pojedyńczego pola) */
+th
+{
+    border: 1px solid black;
+    font-size: 30px;
+    width: 80px;
+    height: 80px;
+}
+/*Stylkowanie pustego pola po najechaniu myszką */
+th:not([pole]):hover
+{
+    background-color: #93a2ff;
+    cursor: pointer;
+}
+/* Stylkowanie pełnego pola po nahechaniu myszką */
+th[pole]:hover
+{
+    background-color: #f00;
+    cursor: not-allowed;
+}
+/* Wypełnienie pola obstaionego x i po najechaniu myszka gdy mamy ruch x */
+#plansza[ruch=x] th:not([pole]):hover::before,
+th[pole=x]::before
+{
+    content: "X";
+}
+/* To samo tylko że z o */
+#plansza[ruch=o] th:not([pole]):hover::before,
+th[pole=o]::before
+{
+    content: "o";
+}
+
